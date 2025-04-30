@@ -5,91 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jueldin Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-[#fdfaf3] text-gray-900 font-sans">
 
-  <header class="bg-white shadow p-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Jueldin Shop</h1>
-      <nav>
-        <a href="#" class="ml-4 text-blue-600 hover:underline">Início</a>
-        <a href="#" class="ml-4 text-blue-600 hover:underline">Produtos</a>
-        <a href="#" class="ml-4 text-blue-600 hover:underline">Contato</a>
-      </nav>
+  <!-- Hero -->
+  <section class="bg-[#cc5c14] text-white py-12 px-6 md:flex md:items-center md:justify-between">
+    <div class="max-w-xl mb-6 md:mb-0">
+      <h1 class="text-3xl font-bold leading-tight mb-4">Produtos de alta qualidade e muito acessíveis!</h1>
+      <p class="text-lg mb-6">Compre aqui electrodomésticos, gadgets, ferramentas, suplementos, e mais...</p>
+      <a href="#produtos" class="bg-black px-6 py-3 rounded-full font-semibold hover:bg-gray-800">VER PRODUTOS</a>
     </div>
-  </header>
+    <img src="https://i.imgur.com/3Vi2qZ2.png" alt="Air Fryer" class="w-64 mx-auto md:mx-0">
+  </section>
 
-  <main class="container mx-auto py-8">
-    <h2 class="text-xl font-semibold mb-4">Produtos em Destaque</h2>
-
-    <!-- BOTÃO DE CATÁLOGO -->
-    <a href="https://wa.me/c/258879903962" target="_blank">
-      <button class="mb-6 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 w-full text-lg font-semibold">
-        Ver Catálogo no WhatsApp
-      </button>
-    </a>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <!-- Produtos -->
+  <section id="produtos" class="py-12 px-6">
+    <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      
       <!-- Produto 1 -->
-      <div class="bg-white shadow rounded-lg p-4">
-        <img src="https://i.imgur.com/jxWqIBf.jpg" alt="Fone Bluetooth" class="w-full h-48 object-cover rounded">
-        <h3 class="text-lg font-bold mt-2">Fone Bluetooth</h3>
-        <p class="text-gray-600 mt-1">Qualidade som estéreo e bateria de longa duração.</p>
-        <p class="text-green-600 font-bold mt-2">R$ 89,90</p>
-        <a href="https://wa.me/258879903962?text=Tenho%20interesse%20no%20Fone%20Bluetooth" target="_blank">
-          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Comprar</button>
-        </a>
+      <div class="text-center">
+        <img src="https://i.imgur.com/Z4kQKLC.png" alt="Aspirador de Pó" class="w-full h-48 object-contain mx-auto mb-4">
+        <h3 class="font-bold text-lg">Aspirador de Pó</h3>
+        <p class="text-gray-700">R$ 399,90</p>
       </div>
 
       <!-- Produto 2 -->
-      <div class="bg-white shadow rounded-lg p-4">
-        <img src="https://i.imgur.com/7WgbGho.jpg" alt="Smartwatch" class="w-full h-48 object-cover rounded">
-        <h3 class="text-lg font-bold mt-2">Smartwatch</h3>
-        <p class="text-gray-600 mt-1">Resistente à água, acompanha batimentos e notificações.</p>
-        <p class="text-green-600 font-bold mt-2">R$ 149,90</p>
-        <a href="https://wa.me/258879903962?text=Tenho%20interesse%20no%20Smartwatch" target="_blank">
-          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Comprar</button>
-        </a>
+      <div class="text-center">
+        <img src="https://i.imgur.com/j1QbwhL.png" alt="Relógio Inteligente" class="w-full h-48 object-contain mx-auto mb-4">
+        <h3 class="font-bold text-lg">Relógio Inteligente</h3>
+        <p class="text-gray-700">R$ 249,90</p>
       </div>
 
       <!-- Produto 3 -->
-      <div class="bg-white shadow rounded-lg p-4">
-        <img src="https://i.imgur.com/8Yp0rA3.jpg" alt="Mini Ring Light" class="w-full h-48 object-cover rounded">
-        <h3 class="text-lg font-bold mt-2">Mini Ring Light</h3>
-        <p class="text-gray-600 mt-1">Ideal para selfies, vídeos e chamadas com boa iluminação.</p>
-        <p class="text-green-600 font-bold mt-2">R$ 39,90</p>
-        <a href="https://wa.me/258879903962?text=Tenho%20interesse%20na%20Mini%20Ring%20Light" target="_blank">
-          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Comprar</button>
-        </a>
+      <div class="text-center">
+        <img src="https://i.imgur.com/MlmwlTO.png" alt="Liquidificador" class="w-full h-48 object-contain mx-auto mb-4">
+        <h3 class="font-bold text-lg">Liquidificador</h3>
+        <p class="text-gray-700">R$ 179,90</p>
       </div>
-    </div>
-  </main>
 
-  <footer class="bg-white text-center p-6 shadow mt-8">
-    <div class="flex flex-col items-center space-y-2 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center max-w-4xl mx-auto">
-      <p>&copy; 2025 Jueldin Shop. Todos os direitos reservados.</p>
-      <div class="flex space-x-4 text-xl">
-        <a href="mailto:contato@jueldinshop.com" class="text-gray-600 hover:text-blue-600">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/258879903962" target="_blank" class="text-green-600 hover:text-green-700">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://instagram.com/jueldinshop" target="_blank" class="text-pink-600 hover:text-pink-700">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.threads.net/@jueldinshop" target="_blank" class="text-black hover:text-gray-800">
-          <i class="fab fa-threads"></i>
-        </a>
-        <a href="https://www.facebook.com/JueldinShop" target="_blank" class="text-blue-800 hover:text-blue-900">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </div>
     </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="bg-[#f2e7d5] py-10 px-6 text-center">
+    <h2 class="text-xl font-bold mb-4">SOBRE A LOJA</h2>
+    <p class="max-w-3xl mx-auto">Somos uma loja focada em trazer produtos de qualidade, com atendimento direto e preços justos. Entregamos para todo o Brasil.</p>
+  </section>
+
+  <!-- Contato -->
+  <section class="bg-[#fff8e8] py-10 px-6 text-center">
+    <h2 class="text-xl font-bold mb-4">CONTATO</h2>
+    <p class="text-lg mb-2">+258 87 990 3962</p>
+    <div class="flex justify-center gap-6 mb-4 text-2xl">
+      <a href="https://wa.me/258879903962" target="_blank" class="text-green-600">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="mailto:jueldinshop@gmail.com" class="text-red-600">Gmail</a>
+    </div>
+    <div class="flex justify-center gap-4">
+      <a href="https://instagram.com/jueldinshop" target="_blank">
+        <img src="https://i.imgur.com/RmF4Y30.png" alt="Instagram" class="w-6">
+      </a>
+      <a href="https://facebook.com/jueldinshop" target="_blank">
+        <img src="https://i.imgur.com/r0wjPxe.png" alt="Facebook" class="w-6">
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-6 text-sm">
+    <p>&copy; 2025 Jueldin Shop, todos os direitos reservados</p>
+    <p class="mt-2 text-red-300">Este site foi criado por: <a href="mailto:dinosart258@gmail.com">dinosart258@gmail.com</a></p>
   </footer>
 
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/b3f6e4f4b6.js" crossorigin="anonymous"></script>
 </body>
 </html>
