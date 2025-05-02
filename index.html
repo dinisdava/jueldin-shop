@@ -3,189 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jueldin Shop</title>
-  <meta name="description" content="Loja Jueldin – Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e mais. Envio rápido.">
-  <meta name="keywords" content="Jueldin Shop, loja online, eletrodomésticos, gadgets, Moçambique">
-
-  <!-- SEO e Open Graph -->
-  <meta property="og:title" content="Jueldin Shop">
-  <meta property="og:description" content="Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e muito mais.">
-  <meta property="og:image" content="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png">
-  <meta property="og:url" content="https://jueldinshop.netlify.app">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Tailwind -->
+  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
+  <title>Catálogo - Jueldin Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Favicon -->
-  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
-
-  <style>
-    html { scroll-behavior: smooth; }
-    .sidebar, .cart, .modal-login { transition: all 0.3s ease-in-out; }
-  </style>
 </head>
-<body class="bg-[#fdfaf3] text-gray-900 font-sans">
+<body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
 
-  <!-- Sidebar Categorias -->
-  <div id="sidebar" class="sidebar fixed top-0 left-0 w-64 h-full bg-white shadow-lg p-6 transform -translate-x-full z-50">
-    <h3 class="font-bold text-lg mb-4">Categorias</h3>
-    <ul class="space-y-2">
-      <li><a href="#" class="hover:underline">Gadgets</a></li>
-      <li><a href="#" class="hover:underline">Electrodomésticos</a></li>
-      <li><a href="#" class="hover:underline">Ferramentas</a></li>
-      <li><a href="#" class="hover:underline">Suplementos</a></li>
-    </ul>
-  </div>
-
-  <!-- Carrinho -->
-  <div id="cart" class="cart fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 transform translate-x-full z-50">
-    <h3 class="font-bold text-lg mb-4">Seu Carrinho</h3>
-    <p class="text-sm text-gray-600">Nenhum item no carrinho.</p>
-  </div>
-
-  <!-- Modal Login -->
-  <div id="loginModal" class="modal-login fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white p-6 rounded-lg w-80">
-      <h3 class="font-bold text-lg mb-4 text-center">Entrar</h3>
-      <input type="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
-      <input type="password" placeholder="Senha" class="w-full p-2 mb-4 border rounded">
-      <button class="w-full bg-[#cc5c14] text-white py-2 rounded font-bold hover:bg-orange-700">Acessar</button>
-    </div>
-  </div>
-
-  <!-- Header -->
+  <!-- Cabeçalho fixo com logo e nome -->
   <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
     <div class="flex items-center gap-3">
       <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
       <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
     </div>
-    <div class="flex gap-4">
-      <button onclick="toggleSidebar()" title="Categorias">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-menu-1000_qye89z.png" alt="Categorias" class="w-6 h-6">
-      </button>
-      <button onclick="toggleCart()" title="Carrinho">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-carrinho-1000_qdekoq.png" alt="Carrinho" class="w-6 h-6">
-      </button>
-      <button onclick="toggleLoginModal()" title="Login">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-login-arredondado-1000_glmy2a.png" alt="Login" class="w-6 h-6">
-      </button>
-    </div>
+    <a href="index.html" class="text-sm text-[#cc5c14] font-semibold underline">← Voltar à página inicial</a>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-[#cc5c14] text-white py-12 px-6 mt-20 md:flex md:items-center md:justify-between">
-    <div class="max-w-xl mb-6 md:mb-0">
-      <h1 class="text-3xl font-bold leading-tight mb-4">Produtos de alta qualidade e muito acessíveis!</h1>
-      <p class="text-lg mb-6">Compre aqui electrodomésticos, gadgets, ferramentas, suplementos, e mais...</p>
-      <a href="produtos.html" class="bg-black px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-800">VER PRODUTOS</a>
-    </div>
-    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148028/Polish_20250502_030330919_rmxqxa.png" alt="Air Fryer" class="w-64 mx-auto md:mx-0" loading="lazy">
-  </section>
-
-  <!-- Scripts para toggle -->
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('-translate-x-full');
-    }
-    function toggleCart() {
-      const cart = document.getElementById('cart');
-      cart.classList.toggle('translate-x-full');
-    }
-    function toggleLoginModal() {
-      const modal = document.getElementById('loginModal');
-      modal.classList.toggle('hidden');
-      modal.classList.toggle('flex');
-    }
-  </script>
-
-  <!-- Script Cookies -->
-  <!-- ... mantém o script dos cookies ... -->
-
-</body>
-</html>
-
-
-  <!-- Produtos -->
-  <section id="produtos" class="py-12 px-6">
-    <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+  <!-- Conteúdo principal com margem para não ficar encoberto -->
+  <main class="pt-32 px-6 mb-32">
+    <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
+    
+    <!-- Grid de Produtos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
       <!-- Produto 1 -->
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
-        <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
+        <p class="text-red-600 font-bold text-lg">1,000 MZN</p>
+        <button onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
+
       <!-- Produto 2 -->
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Selador de massa</h3>
-        <p class="text-red-600 font-bold text-xl">500,00 MZN</p>
+        <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
+        <button onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
+
       <!-- Produto 3 -->
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Liquidificador</h3>
-        <p class="text-red-600 font-bold text-xl">2,500 MZN</p>
+        <p class="text-red-600 font-bold text-lg">2,500 MZN</p>
+        <button onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- CTA Extra -->
-  <section class="bg-[#cc5c14] text-white py-10 text-center">
-    <h2 class="text-2xl font-bold mb-4">Pronto para comprar?</h2>
-    <a href="produtos.html" class="bg-black px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-800">VER PRODUTOS</a>
-  </section>
-
-  <!-- Sobre -->
-  <section class="bg-[#f2e7d5] py-10 px-6 text-center">
-    <h2 class="text-xl font-bold mb-4">SOBRE A LOJA</h2>
-    <p class="max-w-3xl mx-auto">A Jueldin Shop oferece produtos essenciais e práticos para o seu dia a dia, com foco em cuidados pessoais e utilidades domésticas que fazem a diferença.</p>
-  </section>
-
-  <!-- Contato -->
-  <section class="bg-[#fff8e8] py-10 px-6 text-center">
-    <h2 class="text-xl font-bold mb-4">CONTATO</h2>
-    <p class="text-lg mb-2">+258 87 990 3962</p>
-    <div class="flex justify-center gap-6 mb-4 text-lg font-semibold">
-      <a href="https://wa.me/258879903962" target="_blank" class="flex items-center gap-2 text-green-700 hover:underline">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192611/icons8-whatsapp-1000_kershb.png" alt="WhatsApp" class="w-6 h-6" loading="lazy"> WhatsApp
-      </a>
-      <a href="mailto:jueldinshop@gmail.com" class="flex items-center gap-2 text-red-700 hover:underline">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-gmail-1000_gvodzl.png" alt="Gmail" class="w-6 h-6" loading="lazy"> Gmail
-      </a>
-    </div>
-
-    <!-- Redes Sociais -->
-    <div class="flex justify-center flex-wrap gap-6 mt-4">
-      <a href="https://instagram.com/jueldinshop" target="_blank" title="Instagram">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746146138/icons8-instagram-1000_w3gvwl.png" alt="Instagram" class="w-8 h-8 hover:scale-110 transition-transform duration-200 rounded-full" loading="lazy">
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=61556737238546&mibextid=ZbWKwL" target="_blank" title="Facebook">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746131936/icons8-facebook-novo-600_i2ztt0.png" alt="Facebook" class="w-8 h-8 hover:scale-110 transition-transform duration-200 rounded-full" loading="lazy">
-      </a>
-      <a href="https://t.me/jueldinshop" target="_blank" title="Telegram">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192611/icons8-telegram-logo-1000_r9yfu5.png" alt="Telegram" class="w-8 h-8 hover:scale-110 transition-transform duration-200 rounded-full" loading="lazy">
-      </a>
-      <a href="https://www.threads.net/@jueldinshop" target="_blank" title="Threads">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-threads-1000_khv2fu.png" alt="Threads" class="w-8 h-8 hover:scale-110 transition-transform duration-200 rounded-full" loading="lazy">
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-[#3a1f0d] text-white text-center py-6 text-sm">
+  <!-- Footer Profissional -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
     <nav class="mb-4">
-      <a href="/termos" class="mx-3 text-white hover:underline">Termos e Condições</a>
-      <a href="/cookies" class="mx-3 text-white hover:underline">Cookies</a>
-      <a href="/privacidade" class="mx-3 text-white hover:underline">Privacidade</a>
-      <a href="/seguranca" class="mx-3 text-white hover:underline">Segurança</a>
+      <a href="/termos.html" class="mx-3 text-white hover:underline">Termos e Condições</a>
+      <a href="/cookies.html" class="mx-3 text-white hover:underline">Cookies</a>
+      <a href="/privacidade.html" class="mx-3 text-white hover:underline">Privacidade</a>
+      <a href="/seguranca.html" class="mx-3 text-white hover:underline">Segurança</a>
     </nav>
-    <p>Copyright &copy; 2025 Jueldin Shop</p>
+    <p>&copy; 2025 Jueldin Shop</p>
     <p class="mt-2">
-      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-yellow-400 hover:underline">dinosart258@gmail.com</a>
+      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a>
     </p>
   </footer>
 
@@ -195,17 +70,96 @@
     <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
 
-  <!-- Script Cookies -->
-  <script>
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
-      document.getElementById("cookie-banner").style.display = "none";
-    }
+  <!-- Pop-up do Carrinho (Agora flutuante) -->
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-80 z-50">
+    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
+    <ul id="cart-items" class="mb-2"></ul>
+    <p class="font-bold">Total: MZN <span id="cart-total">0,00</span></p>
+    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Finalizar Compra</button>
+  </div>
 
-    window.onload = function() {
+  <!-- Carrinho Fixo -->
+  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
+  <!-- Script para o Carrinho e Cookies -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem("cookiesAccepted") === "true") {
         document.getElementById("cookie-banner").style.display = "none";
       }
+    });
+
+    const cartButton = document.getElementById('cart-button');
+    const cartPopup = document.getElementById('cart-popup');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartCount = document.getElementById('cart-count');
+
+    const cart = [];
+
+    cartButton.addEventListener('click', (event) => {
+      event.stopPropagation(); // Evita que o clique no botão do carrinho feche o pop-up imediatamente
+      cartPopup.classList.toggle('hidden');
+    });
+
+    // Adiciona um ouvinte de evento para fechar o pop-up quando o usuário clicar em qualquer parte da tela
+    document.body.addEventListener('click', () => {
+      cartPopup.classList.add('hidden');
+    });
+
+    // Impede o fechamento do pop-up quando clicar dentro dele
+    cartPopup.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+
+    function addToCart(name, price, image) {
+      const existingProduct = cart.find(item => item.name === name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1, image });
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      let itemCount = 0;
+
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.classList.add('flex', 'items-center', 'mb-2');
+        li.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-contain mr-3">
+          <span class="flex-1">${item.name} x${item.quantity}</span>
+          <span>MZN ${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+        itemCount += item.quantity;
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+      cartCount.textContent = itemCount;
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Carrinho vazio.");
+        return;
+      }
+      alert("Compra finalizada! Em breve entraremos em contato.");
+      cart.length = 0;
+      updateCart();
+      cartPopup.classList.add('hidden');
+    }
+
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none";
     }
   </script>
 
