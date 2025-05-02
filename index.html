@@ -23,14 +23,55 @@
 
   <style>
     html { scroll-behavior: smooth; }
+    .sidebar, .cart, .modal-login { transition: all 0.3s ease-in-out; }
   </style>
 </head>
 <body class="bg-[#fdfaf3] text-gray-900 font-sans">
 
+  <!-- Sidebar Categorias -->
+  <div id="sidebar" class="sidebar fixed top-0 left-0 w-64 h-full bg-white shadow-lg p-6 transform -translate-x-full z-50">
+    <h3 class="font-bold text-lg mb-4">Categorias</h3>
+    <ul class="space-y-2">
+      <li><a href="#" class="hover:underline">Gadgets</a></li>
+      <li><a href="#" class="hover:underline">Electrodomésticos</a></li>
+      <li><a href="#" class="hover:underline">Ferramentas</a></li>
+      <li><a href="#" class="hover:underline">Suplementos</a></li>
+    </ul>
+  </div>
+
+  <!-- Carrinho -->
+  <div id="cart" class="cart fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 transform translate-x-full z-50">
+    <h3 class="font-bold text-lg mb-4">Seu Carrinho</h3>
+    <p class="text-sm text-gray-600">Nenhum item no carrinho.</p>
+  </div>
+
+  <!-- Modal Login -->
+  <div id="loginModal" class="modal-login fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg w-80">
+      <h3 class="font-bold text-lg mb-4 text-center">Entrar</h3>
+      <input type="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
+      <input type="password" placeholder="Senha" class="w-full p-2 mb-4 border rounded">
+      <button class="w-full bg-[#cc5c14] text-white py-2 rounded font-bold hover:bg-orange-700">Acessar</button>
+    </div>
+  </div>
+
   <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 flex flex-wrap items-center gap-3 bg-white px-6 py-4 shadow">
-    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
-    <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+      <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+    </div>
+    <div class="flex gap-4">
+      <button onclick="toggleSidebar()" title="Categorias">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-menu-1000_qye89z.png" alt="Categorias" class="w-6 h-6">
+      </button>
+      <button onclick="toggleCart()" title="Carrinho">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-carrinho-1000_qdekoq.png" alt="Carrinho" class="w-6 h-6">
+      </button>
+      <button onclick="toggleLoginModal()" title="Login">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746192610/icons8-login-arredondado-1000_glmy2a.png" alt="Login" class="w-6 h-6">
+      </button>
+    </div>
   </header>
 
   <!-- Hero -->
@@ -43,10 +84,34 @@
     <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148028/Polish_20250502_030330919_rmxqxa.png" alt="Air Fryer" class="w-64 mx-auto md:mx-0" loading="lazy">
   </section>
 
+  <!-- Scripts para toggle -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('-translate-x-full');
+    }
+    function toggleCart() {
+      const cart = document.getElementById('cart');
+      cart.classList.toggle('translate-x-full');
+    }
+    function toggleLoginModal() {
+      const modal = document.getElementById('loginModal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+  </script>
+
+  <!-- Script Cookies -->
+  <!-- ... mantém o script dos cookies ... -->
+
+</body>
+</html>
+
+
   <!-- Produtos -->
   <section id="produtos" class="py-12 px-6">
     <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
-    <div class="grid grid-cols-3 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       <!-- Produto 1 -->
       <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
