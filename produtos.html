@@ -221,6 +221,119 @@
     toggleCart();
   }
 </script>
+
+  <!-- Modal de Login -->
+<div id="loginModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
+  <div class="flex justify-center items-center h-full">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold text-center mb-4">Entrar na sua conta</h2>
+      <form id="loginForm">
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-semibold">Email</label>
+          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite seu email" required>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-semibold">Senha</label>
+          <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite sua senha" required>
+        </div>
+        <button type="submit" class="w-full bg-[#cc5c14] text-white p-2 rounded-md font-semibold">Entrar</button>
+        <div class="mt-4 text-center">
+          <a href="javascript:void(0)" onclick="showRegister()">Não tem uma conta? Registre-se</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Botão de Login -->
+<button onclick="toggleLoginModal()" class="fixed top-4 left-4 z-50 bg-[#cc5c14] text-white px-4 py-2 rounded shadow-lg hover:bg-orange-600">
+  Login
+</button>
+
+    <!-- Modal de Registro -->
+<div id="registerModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
+  <div class="flex justify-center items-center h-full">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold text-center mb-4">Crie sua conta</h2>
+      <form id="registerForm">
+        <div class="mb-4">
+          <label for="regEmail" class="block text-sm font-semibold">Email</label>
+          <input type="email" id="regEmail" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite seu email" required>
+        </div>
+        <div class="mb-4">
+          <label for="regPassword" class="block text-sm font-semibold">Senha</label>
+          <input type="password" id="regPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite sua senha" required>
+        </div>
+        <div class="mb-4">
+          <label for="regConfirmPassword" class="block text-sm font-semibold">Confirmar Senha</label>
+          <input type="password" id="regConfirmPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Confirmar senha" required>
+        </div>
+        <button type="submit" class="w-full bg-[#cc5c14] text-white p-2 rounded-md font-semibold">Registrar</button>
+        <div class="mt-4 text-center">
+          <a href="javascript:void(0)" onclick="showLogin()">Já tem uma conta? Faça login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <script>
+  // Funções para abrir/fechar os modais
+  function toggleLoginModal() {
+    const modal = document.getElementById("loginModal");
+    modal.classList.toggle("hidden");
+  }
+
+  function toggleRegisterModal() {
+    const modal = document.getElementById("registerModal");
+    modal.classList.toggle("hidden");
+  }
+
+  function showLogin() {
+    toggleRegisterModal();
+    toggleLoginModal();
+  }
+
+  function showRegister() {
+    toggleLoginModal();
+    toggleRegisterModal();
+  }
+
+  // Função para o login
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (email === "user@jueldin.com" && password === "senha123") {
+      alert("Login bem-sucedido!");
+      toggleLoginModal();
+      // Armazenar dados de login localmente (para testar, pode expandir para autenticação real)
+      localStorage.setItem("loggedIn", true);
+    } else {
+      alert("Email ou senha incorretos.");
+    }
+  });
+
+  // Função para o registro
+  document.getElementById("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const regEmail = document.getElementById("regEmail").value;
+    const regPassword = document.getElementById("regPassword").value;
+    const regConfirmPassword = document.getElementById("regConfirmPassword").value;
+
+    if (regPassword === regConfirmPassword) {
+      alert("Conta criada com sucesso!");
+      toggleRegisterModal();
+      // Simular a criação da conta (pode ser expandido para integração com o banco)
+    } else {
+      alert("As senhas não coincidem.");
+    }
+  });
+</script>
+
     
 </body>
             </html>
