@@ -1,44 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catálogo de produtos da Jueldin Shop: eletrodomésticos, ferramentas e gadgets a preços acessíveis. Envio para todo Moçambique.">
-    <meta name="keywords" content="Jueldin Shop, catálogo, produtos, eletrodomésticos, loja online, Moçambique">
-    <meta name="author" content="Jueldin Shop">
-    <title>Catálogo de Produtos - Jueldin Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
+  <title>Catálogo - Jueldin Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-3xl font-semibold text-center">Jueldin Shop</h1>
-    </header>
+<body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
 
-    <main class="container mx-auto p-6">
-        <!-- Título Visível -->
-        <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
+  <!-- Cabeçalho fixo com logo e nome -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+      <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+    </div>
+    <a href="index.html" class="text-sm text-[#cc5c14] font-semibold underline">← Voltar à página inicial</a>
+  </header>
 
-        <!-- Grid de Produtos -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Exemplo de Card de Produto -->
-            <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
-                <img src="https://via.placeholder.com/150" alt="Produto Exemplo" class="mb-4">
-                <h2 class="font-semibold">Produto Exemplo</h2>
-                <p class="text-gray-500">Descrição do produto.</p>
-                <p class="text-lg font-bold mt-2">Preço: 1.000 MT</p>
-            </div>
-            <!-- Mais produtos podem ser adicionados aqui -->
-        </div>
-    </main>
+  <!-- Conteúdo principal com margem para não ficar encoberto -->
+  <main class="pt-28 px-6 mb-32">
+    <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
+    
+    <!-- Grid de Produtos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <!-- Produto 1 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
+        <p class="text-red-600 font-bold text-lg">1,000 MZN</p>
+      </div>
 
-    <footer class="bg-blue-600 text-white p-4 text-center">
-        <p>&copy; 2025 Jueldin Shop. Todos os direitos reservados.</p>
-        <div class="mt-2">
-            <a href="/termos.html" class="text-sm">Termos e Condições</a> | 
-            <a href="/privacidade.html" class="text-sm">Política de Privacidade</a> | 
-            <a href="/cookies.html" class="text-sm">Política de Cookies</a> | 
-            <a href="/seguranca.html" class="text-sm">Segurança</a>
-        </div>
-    </footer>
+      <!-- Produto 2 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Selador de massa</h3>
+        <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Liquidificador</h3>
+        <p class="text-red-600 font-bold text-lg">2,500 MZN</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Profissional -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
+    <nav class="mb-4">
+      <a href="/termos.html" class="mx-3 text-white hover:underline">Termos e Condições</a>
+      <a href="/cookies.html" class="mx-3 text-white hover:underline">Cookies</a>
+      <a href="/privacidade.html" class="mx-3 text-white hover:underline">Privacidade</a>
+      <a href="/seguranca.html" class="mx-3 text-white hover:underline">Segurança</a>
+    </nav>
+    <p>&copy; 2025 Jueldin Shop</p>
+    <p class="mt-2">
+      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white px-4 py-3 text-sm flex justify-between items-center z-50">
+    <span>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/cookies" class="text-blue-400 underline">Política de Cookies</a>.</span>
+    <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
+  </div>
+
+  <!-- Script Cookies -->
+  <script>
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem("cookiesAccepted") === "true") {
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+    }
+  </script>
+
 </body>
-</html>
+            </html>
