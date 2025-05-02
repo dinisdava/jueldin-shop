@@ -163,6 +163,64 @@
   });
 </script>
   
-  
+<!-- Carrinho Pop-up -->
+<div id="cartModal" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300">
+  <div class="flex items-center justify-between p-4 border-b">
+    <h3 class="font-bold text-lg">Carrinho</h3>
+    <button onclick="toggleCart()" class="text-red-600 font-bold text-xl">&times;</button>
+  </div>
+  <div id="cartItems" class="p-4 text-sm overflow-y-auto max-h-[70vh]"></div>
+  <div class="p-4 border-t">
+    <p class="font-bold mb-3">Total: <span id="cartTotal">0 MZN</span></p>
+    <button class="w-full bg-[#cc5c14] text-white font-semibold px-4 py-2 rounded hover:bg-orange-600" onclick="checkout()">Finalizar Compra</button>
+  </div>
+</div>
+
+<!-- Botão flutuante do carrinho -->
+<button onclick="toggleCart()" class="fixed top-4 right-4 z-50 bg-[#cc5c14] text-white px-4 py-2 rounded shadow-lg hover:bg-orange-600">
+  Carrinho (<span id="cartCount">0</span>)
+</button>
+
+<!-- Script do carrinho -->
+<script>
+  const cart = [];
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach((item, i) => {
+      cartItems.innerHTML += `
+        <div class="flex justify-between mb-2">
+          <span>${item.name}</span>
+          <span>${item.price.toLocaleString()} MZN</span>
+        </div>`;
+      total += item.price;
+    });
+
+    cartCount.innerText = cart.length;
+    cartTotal.innerText = total.toLocaleString() + " MZN";
+  }
+
+  function toggleCart() {
+    const modal = document.getElementById("cartModal");
+    modal.classList.toggle("translate-x-full");
+  }
+
+  function checkout() {
+    alert("Compra finalizada! Em breve entraremos em contacto.");
+    cart.length = 0;
+    updateCartUI();
+    toggleCart();
+  }
+</script>
+    
 </body>
             </html>
