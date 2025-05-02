@@ -1,110 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
   <title>Catálogo - Jueldin Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
 
-  <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">Catálogo de Produtos</h1>
+  <!-- Cabeçalho fixo com logo e nome -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+      <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+    </div>
+    <a href="index.html" class="text-sm text-[#cc5c14] font-semibold underline">← Voltar à página inicial</a>
+  </header>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <!-- Conteúdo principal com margem para não ficar encoberto -->
+  <main class="pt-32 px-6 mb-32"> <!-- Aumentei o padding superior para garantir que o conteúdo não fique atrás do cabeçalho -->
+    <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
+    
+    <!-- Grid de Produtos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
       <!-- Produto 1 -->
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 1" class="w-full h-48 object-cover mb-4">
-        <h2 class="text-xl font-semibold">Produto 1</h2>
-        <p class="text-gray-700">R$ 49.90</p>
-        <button onclick="addToCart('Produto 1', 49.90)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
+        <p class="text-red-600 font-bold text-lg">1,000 MZN</p>
       </div>
 
       <!-- Produto 2 -->
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 2" class="w-full h-48 object-cover mb-4">
-        <h2 class="text-xl font-semibold">Produto 2</h2>
-        <p class="text-gray-700">R$ 89.00</p>
-        <button onclick="addToCart('Produto 2', 89.00)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Selador de massa</h3>
+        <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
       </div>
 
       <!-- Produto 3 -->
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 3" class="w-full h-48 object-cover mb-4">
-        <h2 class="text-xl font-semibold">Produto 3</h2>
-        <p class="text-gray-700">R$ 120.00</p>
-        <button onclick="addToCart('Produto 3', 120.00)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Liquidificador</h3>
+        <p class="text-red-600 font-bold text-lg">2,500 MZN</p>
       </div>
     </div>
+  </main>
+
+  <!-- Footer Profissional -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
+    <nav class="mb-4">
+      <a href="/termos.html" class="mx-3 text-white hover:underline">Termos e Condições</a>
+      <a href="/cookies.html" class="mx-3 text-white hover:underline">Cookies</a>
+      <a href="/privacidade.html" class="mx-3 text-white hover:underline">Privacidade</a>
+      <a href="/seguranca.html" class="mx-3 text-white hover:underline">Segurança</a>
+    </nav>
+    <p>&copy; 2025 Jueldin Shop</p>
+    <p class="mt-2">
+      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a>
+    </p>
+  </footer>
+
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white px-4 py-3 text-sm flex justify-between items-center z-50">
+    <span>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/cookies" class="text-blue-400 underline">Política de Cookies</a>.</span>
+    <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
 
-  <!-- Carrinho Fixo -->
-  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50">
-    🛒 <span id="cart-count">0</span>
-  </div>
-
-  <!-- Pop-up do Carrinho -->
-  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-80 z-50">
-    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
-    <ul id="cart-items" class="mb-2"></ul>
-    <p class="font-bold">Total: R$<span id="cart-total">0,00</span></p>
-    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Finalizar Compra</button>
-  </div>
-
+  <!-- Script Cookies -->
   <script>
-    const cartButton = document.getElementById('cart-button');
-    const cartPopup = document.getElementById('cart-popup');
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    const cartCount = document.getElementById('cart-count');
-
-    const cart = [];
-
-    cartButton.addEventListener('click', () => {
-      cartPopup.classList.toggle('hidden');
-    });
-
-    function addToCart(name, price) {
-      const existingProduct = cart.find(item => item.name === name);
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        cart.push({ name, price, quantity: 1 });
-      }
-      updateCart();
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none";
     }
 
-    function updateCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      let itemCount = 0;
-
-      cart.forEach(item => {
-        const li = document.createElement('li');
-        li.classList.add('flex', 'justify-between', 'items-center', 'mb-2');
-        li.innerHTML = `
-          <span>${item.name} x${item.quantity}</span>
-          <span>R$ ${(item.price * item.quantity).toFixed(2)}</span>
-        `;
-        cartItems.appendChild(li);
-        total += item.price * item.quantity;
-        itemCount += item.quantity;
-      });
-
-      cartTotal.textContent = total.toFixed(2);
-      cartCount.textContent = itemCount;
-    }
-
-    function checkout() {
-      if (cart.length === 0) {
-        alert("Carrinho vazio.");
-        return;
+    window.onload = function() {
+      if (localStorage.getItem("cookiesAccepted") === "true") {
+        document.getElementById("cookie-banner").style.display = "none";
       }
-      alert("Compra finalizada! Em breve entraremos em contato.");
-      cart.length = 0;
-      updateCart();
-      cartPopup.classList.add('hidden');
     }
   </script>
+
 </body>
 </html>
