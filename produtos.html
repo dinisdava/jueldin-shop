@@ -1,339 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Catálogo - Jueldin Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
+<body class="bg-gray-100">
 
-  <!-- Cabeçalho fixo com logo e nome -->
-<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
-  <div class="flex items-center gap-3">
-    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
-    <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
-  </div>
-  <a href="javascript:history.back()" title="Voltar" class="text-[#cc5c14] hover:text-[#a6450f]">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-    </svg>
-  </a>
-  </header>
-  <!-- Conteúdo principal com margem para não ficar encoberto -->
-  <main class="pt-28 px-6 mb-32">
-    <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
-    
-    <!-- Produtos -->
-<section id="produtos" class="py-12 px-6">
-  <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
-  <div class="grid grid-cols-3 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-    
-    <!-- Produto 1 -->
-    <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
-      <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
-      <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
-      <button onclick="addToCart('Batedeira manual RAF', 1000)" class="mt-3 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Adicionar ao carrinho</button>
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Catálogo de Produtos</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Produto 1 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 1" class="w-full h-48 object-cover mb-4">
+        <h2 class="text-xl font-semibold">Produto 1</h2>
+        <p class="text-gray-700">R$ 49.90</p>
+        <button onclick="addToCart('Produto 1', 49.90)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 2" class="w-full h-48 object-cover mb-4">
+        <h2 class="text-xl font-semibold">Produto 2</h2>
+        <p class="text-gray-700">R$ 89.00</p>
+        <button onclick="addToCart('Produto 2', 89.00)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://res.cloudinary.com/demo/image/upload/sample.jpg" alt="Produto 3" class="w-full h-48 object-cover mb-4">
+        <h2 class="text-xl font-semibold">Produto 3</h2>
+        <p class="text-gray-700">R$ 120.00</p>
+        <button onclick="addToCart('Produto 3', 120.00)" class="mt-2 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
     </div>
-
-    <!-- Produto 2 -->
-    <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
-      <h3 class="font-bold text-lg">Selador de massa</h3>
-      <p class="text-red-600 font-bold text-xl">500 MZN</p>
-      <button onclick="addToCart('Selador de massa', 500)" class="mt-3 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Adicionar ao carrinho</button>
-    </div>
-
-    <!-- Produto 3 -->
-    <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
-      <h3 class="font-bold text-lg">Liquidificador</h3>
-      <p class="text-red-600 font-bold text-xl">2,500 MZN</p>
-      <button onclick="addToCart('Liquidificador', 2500)" class="mt-3 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Adicionar ao carrinho</button>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Footer Profissional -->
-  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
-    <nav class="mb-4">
-      <a href="/termos.html" class="mx-3 text-white hover:underline">Termos e Condições</a>
-      <a href="/cookies.html" class="mx-3 text-white hover:underline">Cookies</a>
-      <a href="/privacidade.html" class="mx-3 text-white hover:underline">Privacidade</a>
-      <a href="/seguranca.html" class="mx-3 text-white hover:underline">Segurança</a>
-    </nav>
-    <p>&copy; 2025 Jueldin Shop</p>
-    <p class="mt-2">
-      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a>
-    </p>
-  </footer>
-
-  <!-- Banner de Cookies -->
-  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white px-4 py-3 text-sm flex justify-between items-center z-50">
-    <span>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/cookies" class="text-blue-400 underline">Política de Cookies</a>.</span>
-    <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
 
-  <!-- Script Cookies -->
+  <!-- Carrinho Fixo -->
+  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
+  <!-- Pop-up do Carrinho -->
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-80 z-50">
+    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
+    <ul id="cart-items" class="mb-2"></ul>
+    <p class="font-bold">Total: R$<span id="cart-total">0,00</span></p>
+    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Finalizar Compra</button>
+  </div>
+
   <script>
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
-      document.getElementById("cookie-banner").style.display = "none";
-    }
+    const cartButton = document.getElementById('cart-button');
+    const cartPopup = document.getElementById('cart-popup');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartCount = document.getElementById('cart-count');
 
-    window.onload = function() {
-      if (localStorage.getItem("cookiesAccepted") === "true") {
-        document.getElementById("cookie-banner").style.display = "none";
-      }
-    }
-  </script>
+    const cart = [];
 
-<!-- Botão do Carrinho -->
-<div id="cart-button" class="fixed top-4 right-4 z-50 bg-white p-2 rounded-full shadow cursor-pointer hover:bg-gray-100">
-  <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746201581/icons8-shopping-cart-96_mcfsvw.png" alt="Carrinho" class="w-6 h-6">
-  <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
-</div>
-
-<!-- Pop-up do Carrinho -->
-<div id="cart-popup" class="fixed top-16 right-4 w-80 bg-white shadow-lg rounded-lg p-4 z-50 hidden">
-  <h3 class="text-lg font-bold mb-3">Seu Carrinho</h3>
-  <div id="cart-items" class="space-y-2 max-h-60 overflow-y-auto"></div>
-  <div class="mt-4 border-t pt-2">
-    <p class="font-semibold">Total: <span id="cart-total">0 MZN</span></p>
-  </div>
-</div>
-
-<!-- Script Carrinho -->
-<script>
-  const cartButton = document.getElementById('cart-button');
-  const cartPopup = document.getElementById('cart-popup');
-  const cartCount = document.getElementById('cart-count');
-  const cartItems = document.getElementById('cart-items');
-  const cartTotal = document.getElementById('cart-total');
-
-  let cart = [];
-
-  function updateCart() {
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-      total += item.price;
-
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'flex justify-between items-center bg-gray-100 p-2 rounded';
-
-      itemDiv.innerHTML = `
-        <span>${item.name}</span>
-        <div class="flex gap-2 items-center">
-          <span class="font-semibold">${item.price} MZN</span>
-          <button onclick="removeFromCart(${index})" class="text-red-600 font-bold">X</button>
-        </div>
-      `;
-
-      cartItems.appendChild(itemDiv);
+    cartButton.addEventListener('click', () => {
+      cartPopup.classList.toggle('hidden');
     });
 
-    cartTotal.textContent = total + ' MZN';
-    cartCount.textContent = cart.length;
-  }
+    function addToCart(name, price) {
+      const existingProduct = cart.find(item => item.name === name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      updateCart();
+    }
 
-  function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCart();
-  }
+    function updateCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      let itemCount = 0;
 
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-  }
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.classList.add('flex', 'justify-between', 'items-center', 'mb-2');
+        li.innerHTML = `
+          <span>${item.name} x${item.quantity}</span>
+          <span>R$ ${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+        itemCount += item.quantity;
+      });
 
-  cartButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    cartPopup.classList.toggle('hidden');
-  });
+      cartTotal.textContent = total.toFixed(2);
+      cartCount.textContent = itemCount;
+    }
 
-  document.addEventListener('click', (e) => {
-    if (!cartPopup.contains(e.target) && !cartButton.contains(e.target)) {
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Carrinho vazio.");
+        return;
+      }
+      alert("Compra finalizada! Em breve entraremos em contato.");
+      cart.length = 0;
+      updateCart();
       cartPopup.classList.add('hidden');
     }
-  });
-</script>
-  
-<!-- Carrinho Pop-up -->
-<div id="cartModal" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300">
-  <div class="flex items-center justify-between p-4 border-b">
-    <h3 class="font-bold text-lg">Carrinho</h3>
-    <button onclick="toggleCart()" class="text-red-600 font-bold text-xl">&times;</button>
-  </div>
-  <div id="cartItems" class="p-4 text-sm overflow-y-auto max-h-[70vh]"></div>
-  <div class="p-4 border-t">
-    <p class="font-bold mb-3">Total: <span id="cartTotal">0 MZN</span></p>
-    <button class="w-full bg-[#cc5c14] text-white font-semibold px-4 py-2 rounded hover:bg-orange-600" onclick="checkout()">Finalizar Compra</button>
-  </div>
-</div>
-
-<!-- Botão flutuante do carrinho -->
-<button onclick="toggleCart()" class="fixed top-4 right-4 z-50 bg-[#cc5c14] text-white px-4 py-2 rounded shadow-lg hover:bg-orange-600">
-  Carrinho (<span id="cartCount">0</span>)
-</button>
-
-<!-- Script do carrinho -->
-<script>
-  const cart = [];
-  function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCartUI();
-  }
-
-  function updateCartUI() {
-    const cartItems = document.getElementById("cartItems");
-    const cartCount = document.getElementById("cartCount");
-    const cartTotal = document.getElementById("cartTotal");
-
-    cartItems.innerHTML = "";
-    let total = 0;
-    cart.forEach((item, i) => {
-      cartItems.innerHTML += `
-        <div class="flex justify-between mb-2">
-          <span>${item.name}</span>
-          <span>${item.price.toLocaleString()} MZN</span>
-        </div>`;
-      total += item.price;
-    });
-
-    cartCount.innerText = cart.length;
-    cartTotal.innerText = total.toLocaleString() + " MZN";
-  }
-
-  function toggleCart() {
-    const modal = document.getElementById("cartModal");
-    modal.classList.toggle("translate-x-full");
-  }
-
-  function checkout() {
-    alert("Compra finalizada! Em breve entraremos em contacto.");
-    cart.length = 0;
-    updateCartUI();
-    toggleCart();
-  }
-</script>
-
-  <!-- Modal de Login -->
-<div id="loginModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
-  <div class="flex justify-center items-center h-full">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-      <h2 class="text-2xl font-bold text-center mb-4">Entrar na sua conta</h2>
-      <form id="loginForm">
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-semibold">Email</label>
-          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite seu email" required>
-        </div>
-        <div class="mb-4">
-          <label for="password" class="block text-sm font-semibold">Senha</label>
-          <input type="password" id="password" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite sua senha" required>
-        </div>
-        <button type="submit" class="w-full bg-[#cc5c14] text-white p-2 rounded-md font-semibold">Entrar</button>
-        <div class="mt-4 text-center">
-          <a href="javascript:void(0)" onclick="showRegister()">Não tem uma conta? Registre-se</a>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Botão de Login -->
-<button onclick="toggleLoginModal()" class="fixed top-4 left-4 z-50 bg-[#cc5c14] text-white px-4 py-2 rounded shadow-lg hover:bg-orange-600">
-  Login
-</button>
-
-    <!-- Modal de Registro -->
-<div id="registerModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 hidden">
-  <div class="flex justify-center items-center h-full">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-      <h2 class="text-2xl font-bold text-center mb-4">Crie sua conta</h2>
-      <form id="registerForm">
-        <div class="mb-4">
-          <label for="regEmail" class="block text-sm font-semibold">Email</label>
-          <input type="email" id="regEmail" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite seu email" required>
-        </div>
-        <div class="mb-4">
-          <label for="regPassword" class="block text-sm font-semibold">Senha</label>
-          <input type="password" id="regPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Digite sua senha" required>
-        </div>
-        <div class="mb-4">
-          <label for="regConfirmPassword" class="block text-sm font-semibold">Confirmar Senha</label>
-          <input type="password" id="regConfirmPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Confirmar senha" required>
-        </div>
-        <button type="submit" class="w-full bg-[#cc5c14] text-white p-2 rounded-md font-semibold">Registrar</button>
-        <div class="mt-4 text-center">
-          <a href="javascript:void(0)" onclick="showLogin()">Já tem uma conta? Faça login</a>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-    <script>
-  // Funções para abrir/fechar os modais
-  function toggleLoginModal() {
-    const modal = document.getElementById("loginModal");
-    modal.classList.toggle("hidden");
-  }
-
-  function toggleRegisterModal() {
-    const modal = document.getElementById("registerModal");
-    modal.classList.toggle("hidden");
-  }
-
-  function showLogin() {
-    toggleRegisterModal();
-    toggleLoginModal();
-  }
-
-  function showRegister() {
-    toggleLoginModal();
-    toggleRegisterModal();
-  }
-
-  // Função para o login
-  document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    if (email === "user@jueldin.com" && password === "senha123") {
-      alert("Login bem-sucedido!");
-      toggleLoginModal();
-      // Armazenar dados de login localmente (para testar, pode expandir para autenticação real)
-      localStorage.setItem("loggedIn", true);
-    } else {
-      alert("Email ou senha incorretos.");
-    }
-  });
-
-  // Função para o registro
-  document.getElementById("registerForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const regEmail = document.getElementById("regEmail").value;
-    const regPassword = document.getElementById("regPassword").value;
-    const regConfirmPassword = document.getElementById("regConfirmPassword").value;
-
-    if (regPassword === regConfirmPassword) {
-      alert("Conta criada com sucesso!");
-      toggleRegisterModal();
-      // Simular a criação da conta (pode ser expandido para integração com o banco)
-    } else {
-      alert("As senhas não coincidem.");
-    }
-  });
-</script>
-
-    
+  </script>
 </body>
-            </html>
+</html>
