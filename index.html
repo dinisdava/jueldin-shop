@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <header class="fixed top-0 left-0 right-0 z-50 flex items-center gap-3 bg-white px-6 py-4 shadow">
-  <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
-  <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
-</header>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jueldin Shop</title>
   <meta name="description" content="Loja Jueldin – Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e mais. Envio rápido.">
   <meta name="keywords" content="Jueldin Shop, loja online, eletrodomésticos, gadgets, Moçambique">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- SEO e Open Graph -->
+  <meta property="og:title" content="Jueldin Shop">
+  <meta property="og:description" content="Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e muito mais.">
+  <meta property="og:image" content="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png">
+  <meta property="og:url" content="https://jueldinshop.netlify.app">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Favicon -->
   <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="bg-[#fdfaf3] text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center gap-3 bg-white px-6 py-4 shadow">
+    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+    <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+  </header>
 
   <!-- Hero -->
   <section class="bg-[#cc5c14] text-white py-12 px-6 mt-20 md:flex md:items-center md:justify-between">
@@ -75,14 +84,15 @@
   <section class="bg-[#fff8e8] py-10 px-6 text-center">
     <h2 class="text-xl font-bold mb-4">CONTATO</h2>
     <p class="text-lg mb-2">+258 87 990 3962</p>
-    <div class="flex justify-center gap-6 mb-4 text-2xl">
-      <a href="https://wa.me/258879903962" target="_blank" class="text-green-600">
-        <i class="fab fa-whatsapp"></i> WhatsApp
+    <div class="flex justify-center gap-6 mb-4 text-lg font-semibold">
+      <a href="https://wa.me/258879903962" target="_blank" class="flex items-center gap-2 text-green-700 hover:underline">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746183905/icons8-whatsapp-96_uzbl0d.png" alt="WhatsApp" class="w-6 h-6"> WhatsApp
       </a>
-      <a href="mailto:jueldinshop@gmail.com" class="text-red-600">
-        <i class="fas fa-envelope"></i> Gmail
+      <a href="mailto:jueldinshop@gmail.com" class="flex items-center gap-2 text-red-700 hover:underline">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746183904/icons8-gmail-novo-480_w8ye7e.png" alt="Gmail" class="w-6 h-6"> Gmail
       </a>
     </div>
+
     <!-- Redes Sociais -->
     <div class="flex justify-center gap-4">
       <a href="https://instagram.com/jueldinshop" target="_blank">
@@ -93,8 +103,6 @@
       </a>
     </div>
   </section>
-
-  <!-- Substitua seu footer + fim do body por isso -->
 
   <!-- Footer Profissional -->
   <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
@@ -131,4 +139,4 @@
   </script>
 
 </body>
-</html>
+          </html>
