@@ -42,9 +42,41 @@
     </div>
   </main>
 
-  <footer class="bg-[#3a1f0d] text-white text-center py-6 text-sm mt-10">
-    <p>&copy; 2025 Jueldin Shop, todos os direitos reservados</p>
+  <!-- Substitua seu footer + fim do body por isso -->
+
+  <!-- Footer Profissional -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
+    <nav class="mb-4">
+      <a href="/termos" class="mx-3 text-white hover:underline">Termos e Condições</a>
+      <a href="/cookies" class="mx-3 text-white hover:underline">Cookies</a>
+      <a href="/privacidade" class="mx-3 text-white hover:underline">Privacidade</a>
+      <a href="/seguranca" class="mx-3 text-white hover:underline">Segurança</a>
+    </nav>
+    <p>&copy; 2025 Jueldin Shop</p>
+    <p class="mt-2">
+      Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a>
+    </p>
   </footer>
+
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white px-4 py-3 text-sm flex justify-between items-center z-50">
+    <span>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/cookies" class="text-blue-400 underline">Política de Cookies</a>.</span>
+    <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
+  </div>
+
+  <!-- Script Cookies -->
+  <script>
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem("cookiesAccepted") === "true") {
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
