@@ -19,7 +19,7 @@
   </header>
 
   <!-- Conteúdo principal com margem para não ficar encoberto -->
-  <main class="pt-32 px-6 mb-32"> <!-- Aumentei o padding superior para garantir que o conteúdo não fique atrás do cabeçalho -->
+  <main class="pt-32 px-6 mb-32">
     <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
     
     <!-- Grid de Produtos -->
@@ -29,6 +29,7 @@
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
         <p class="text-red-600 font-bold text-lg">1,000 MZN</p>
+        <button onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
 
       <!-- Produto 2 -->
@@ -36,6 +37,7 @@
         <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Selador de massa</h3>
         <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
+        <button onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
 
       <!-- Produto 3 -->
@@ -43,6 +45,7 @@
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Liquidificador</h3>
         <p class="text-red-600 font-bold text-lg">2,500 MZN</p>
+        <button onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
     </div>
   </main>
@@ -67,8 +70,22 @@
     <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
 
-  <!-- Script Cookies -->
+  <!-- Pop-up do Carrinho -->
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-80 z-50">
+    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
+    <ul id="cart-items" class="mb-2"></ul>
+    <p class="font-bold">Total: MZN <span id="cart-total">0,00</span></p>
+    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Finalizar Compra</button>
+  </div>
+
+  <!-- Carrinho Fixo -->
+  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
+  <!-- Script para o Carrinho e Cookies -->
   <script>
+    // Função para aceitar cookies
     function acceptCookies() {
       localStorage.setItem("cookiesAccepted", "true");
       document.getElementById("cookie-banner").style.display = "none";
@@ -78,6 +95,66 @@
       if (localStorage.getItem("cookiesAccepted") === "true") {
         document.getElementById("cookie-banner").style.display = "none";
       }
+    }
+
+    // Lógica do Carrinho
+    const cartButton = document.getElementById('cart-button');
+    const cartPopup = document.getElementById('cart-popup');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartCount = document.getElementById('cart-count');
+
+    const cart = [];
+
+    // Abrir/fechar o pop-up do carrinho
+    cartButton.addEventListener('click', () => {
+      cartPopup.classList.toggle('hidden');
+    });
+
+    // Adicionar produto ao carrinho
+    function addToCart(name, price, image) {
+      const existingProduct = cart.find(item => item.name === name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1, image });
+      }
+      updateCart();
+    }
+
+    // Atualizar o carrinho
+    function updateCart() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      let itemCount = 0;
+
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.classList.add('flex', 'items-center', 'mb-2');
+        li.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-contain mr-3">
+          <span class="flex-1">${item.name} x${item.quantity}</span>
+          <span>MZN ${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+        itemCount += item.quantity;
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+      cartCount.textContent = itemCount;
+    }
+
+    // Finalizar compra
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Carrinho vazio.");
+        return;
+      }
+      alert("Compra finalizada! Em breve entraremos em contato.");
+      cart.length = 0;
+      updateCart();
+      cartPopup.classList.add('hidden');
     }
   </script>
 
