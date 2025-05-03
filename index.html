@@ -20,47 +20,19 @@
 
   <!-- Favicon -->
   <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
-
-  <style>
-    html { scroll-behavior: smooth; }
-    .sidebar {
-      transition: all 0.3s ease-in-out;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .cart-popup {
-      display: none;
-      overflow-y: auto;
-      max-height: 100vh;
-    }
-    .cart-popup.active {
-      display: block;
-    }
-  </style>
 </head>
 <body class="bg-[#fdfaf3] text-gray-900 font-sans">
 
-  <!-- Sidebar Categorias -->
-  <div id="sidebar" class="sidebar fixed top-20 left-0 w-64 bg-white shadow-lg p-6 transform -translate-x-full z-40 rounded-br-lg">
-    <h3 class="font-bold text-lg mb-4">Categorias</h3>
-    <ul class="space-y-2">
-      <li><a href="#" class="hover:underline">Gadgets</a></li>
-      <li><a href="#" class="hover:underline">Electrodomésticos</a></li>
-      <li><a href="#" class="hover:underline">Ferramentas</a></li>
-      <li><a href="#" class="hover:underline">Suplementos</a></li>
-    </ul>
-  </div>
-
   <!-- Pop-up Carrinho -->
-  <div id="cart-popup" class="cart-popup fixed top-0 right-0 w-80 max-w-full h-full bg-white shadow-lg p-6 z-50 overflow-y-auto">
-    <h3 class="font-bold text-lg mb-4">Seu Carrinho</h3>
-    <ul id="cart-items" class="space-y-2"></ul>
-    <p id="cart-total" class="text-sm font-bold text-gray-600 mt-4">Total: 0.00 MZN</p>
-    <button id="checkout-btn" class="w-full bg-[#cc5c14] text-white py-2 rounded mt-4 hover:bg-orange-700">Finalizar Compra</button>
+  <div id="cart-popup" class="fixed right-4 top-20 w-96 max-w-full bg-white shadow-lg rounded-lg p-4 z-50 hidden">
+    <h3 class="text-lg font-bold mb-4">Seu Carrinho</h3>
+    <ul id="cart-items" class="space-y-2 max-h-60 overflow-y-auto pr-2"></ul>
+    <p class="text-right text-gray-700 font-bold mt-4">Total: <span id="cart-total">0 MZN</span></p>
+    <button onclick="checkout()" class="w-full mt-4 bg-[#cc5c14] hover:bg-orange-700 text-white py-2 rounded">Finalizar Compra</button>
   </div>
 
   <!-- Modal Login -->
-  <div id="loginModal" class="modal-login fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white p-6 rounded-lg w-80">
       <h3 class="font-bold text-lg mb-4 text-center">Entrar</h3>
       <input type="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
@@ -75,15 +47,14 @@
       <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
       <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
     </div>
-    <div class="flex gap-4">
-      <button onclick="toggleCart()" title="Carrinho">
+    <div class="flex gap-4 items-center">
+      <!-- Carrinho com contador -->
+      <button id="cart-button" class="relative" title="Carrinho">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-shopping-cart-90_pzyzgm.png" alt="Carrinho" class="w-6 h-6">
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
       </button>
       <button onclick="toggleLoginModal()" title="Login">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-login-90_wtj0g4.png" alt="Login" class="w-6 h-6">
-      </button>
-      <button onclick="toggleSidebar()" title="Categorias">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216494/icons8-more-1000_le4gmx.png" alt="Categorias" class="w-6 h-6">
       </button>
     </div>
   </header>
@@ -102,18 +73,26 @@
   <section id="produtos" class="py-12 px-6">
     <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
         <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
       </div>
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
         <h3 class="font-bold text-lg">Selador de massa</h3>
         <p class="text-red-600 font-bold text-xl">500,00 MZN</p>
       </div>
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
         <h3 class="font-bold text-lg">Liquidificador</h3>
         <p class="text-red-600 font-bold text-xl">2,500 MZN</p>
       </div>
@@ -122,33 +101,20 @@
 
   <!-- Scripts -->
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('-translate-x-full');
-    }
-
-    function toggleCart() {
-      document.getElementById('cart-popup').classList.toggle('active');
-    }
-
     function toggleLoginModal() {
       document.getElementById('loginModal').classList.toggle('hidden');
     }
 
     document.addEventListener('click', function(event) {
-      if (!event.target.closest('#cart-popup') && !event.target.closest('[onclick="toggleCart()"]')) {
-        document.getElementById('cart-popup').classList.remove('active');
-      }
-      if (!event.target.closest('#sidebar') && !event.target.closest('[onclick="toggleSidebar()"]')) {
-        document.getElementById('sidebar').classList.add('-translate-x-full');
+      const cartPopup = document.getElementById('cart-popup');
+      if (!event.target.closest('#cart-popup') && !event.target.closest('#cart-button')) {
+        cartPopup.classList.add('hidden');
       }
       if (!event.target.closest('#loginModal') && !event.target.closest('[onclick="toggleLoginModal()"]')) {
         document.getElementById('loginModal').classList.add('hidden');
       }
     });
   </script>
-
-  <!-- Carrinho -->
   <script src="cart.js"></script>
 </body>
 </html>
