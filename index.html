@@ -6,60 +6,22 @@
   <title>Jueldin Shop</title>
   <meta name="description" content="Loja Jueldin – Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e mais. Envio rápido.">
   <meta name="keywords" content="Jueldin Shop, loja online, eletrodomésticos, gadgets, Moçambique">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Jueldin Shop">
   <meta property="og:description" content="Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e muito mais.">
   <meta property="og:image" content="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png">
   <meta property="og:url" content="https://jueldinshop.netlify.app">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
-
   <style>
     html { scroll-behavior: smooth; }
-    .sidebar, .cart, .modal-login { transition: all 0.3s ease-in-out; }
-    .cart-popup { display: none; }
-    .cart-popup.active { display: block; }
-
-    @media (max-width: 768px) {
-      #cart-popup {
-        width: 100%;
-        max-width: 100%;
-      }
-    }
   </style>
 </head>
-<body class="bg-[#fdfaf3] text-gray-900 font-sans">
+<body class="bg-[#fdfaf3] text-gray-900 font-sans relative">
 
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar fixed top-0 left-0 w-64 h-full bg-white shadow-lg p-6 transform -translate-x-full z-50">
-    <h3 class="font-bold text-lg mb-4">Categorias</h3>
-    <ul class="space-y-2">
-      <li><a href="#" class="hover:underline">Gadgets</a></li>
-      <li><a href="#" class="hover:underline">Electrodomésticos</a></li>
-      <li><a href="#" class="hover:underline">Ferramentas</a></li>
-      <li><a href="#" class="hover:underline">Suplementos</a></li>
-    </ul>
-  </div>
-
-  <!-- Carrinho -->
-  <div id="cart-popup" class="cart-popup fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 z-50 overflow-y-auto">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="font-bold text-lg">Seu Carrinho</h3>
-      <button onclick="toggleCart()" class="text-gray-500 text-xl font-bold hover:text-red-600">&times;</button>
-    </div>
-    <ul id="cart-items" class="space-y-2"></ul>
-    <p id="cart-total" class="text-sm font-bold text-gray-600 mt-4">Total: 0.00 MZN</p>
-    <button id="checkout-btn" class="w-full bg-[#cc5c14] text-white py-2 rounded mt-4 hover:bg-orange-700">Finalizar Compra</button>
-  </div>
-
-  <!-- Modal Login -->
-  <div id="loginModal" class="modal-login fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <!-- Login Modal -->
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white p-6 rounded-lg w-80">
       <h3 class="font-bold text-lg mb-4 text-center">Entrar</h3>
       <input type="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
@@ -74,15 +36,12 @@
       <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
       <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
     </div>
-    <div class="flex gap-4">
-      <button onclick="toggleCart()" title="Carrinho">
+    <div class="flex gap-4 items-center">
+      <button onclick="toggleCartPopup()" title="Carrinho">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-shopping-cart-90_pzyzgm.png" alt="Carrinho" class="w-6 h-6">
       </button>
       <button onclick="toggleLoginModal()" title="Login">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-login-90_wtj0g4.png" alt="Login" class="w-6 h-6">
-      </button>
-      <button onclick="toggleSidebar()" title="Categorias">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216494/icons8-more-1000_le4gmx.png" alt="Categorias" class="w-6 h-6">
       </button>
     </div>
   </header>
@@ -106,8 +65,8 @@
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
         <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
       </div>
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
         <h3 class="font-bold text-lg">Selador de massa</h3>
         <p class="text-red-600 font-bold text-xl">500,00 MZN</p>
       </div>
@@ -119,69 +78,40 @@
     </div>
   </section>
 
-  <!-- Pop-up de Confirmação -->
-  <div id="add-confirmation" class="fixed bottom-24 right-4 bg-green-600 text-white py-2 px-4 rounded shadow hidden z-50">
-    Adicionado ao carrinho!
+  <!-- Pop-up Carrinho -->
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-full max-w-md z-50">
+    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
+    <ul id="cart-items" class="mb-2"></ul>
+    <p class="font-bold">Total: <span id="cart-total">0,00 MZN</span></p>
+    <div class="mt-4 space-y-2 text-sm">
+      <input type="text" id="cliente-nome" placeholder="Nome completo" class="w-full border rounded px-3 py-2" />
+      <input type="text" id="cliente-endereco" placeholder="Endereço" class="w-full border rounded px-3 py-2" />
+      <select id="cliente-pagamento" class="w-full border rounded px-3 py-2">
+        <option value="">Forma de pagamento</option>
+        <option>Dinheiro</option>
+        <option>mKesh</option>
+        <option>eMola</option>
+        <option>Cartão</option>
+      </select>
+    </div>
+    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Enviar Pedido pelo WhatsApp</button>
+  </div>
+
+  <!-- Carrinho Flutuante -->
+  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50" onclick="toggleCartPopup()">
+    🛒 <span id="cart-count">0</span>
   </div>
 
   <!-- Scripts -->
   <script>
-    let cart = [];
-    let cartButton = document.getElementById('cart-popup');
-    let cartItems = document.getElementById('cart-items');
-    let cartTotal = document.getElementById('cart-total');
-
-    function toggleCart() {
-      cartButton.classList.toggle('active');
+    function toggleCartPopup() {
+      const popup = document.getElementById('cart-popup');
+      popup.classList.toggle('hidden');
     }
-
-    function addToCart(name, price, image) {
-      const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ name, price, quantity: 1, image });
-      }
-      updateCart();
-
-      const confirmPopup = document.getElementById('add-confirmation');
-      confirmPopup.classList.remove('hidden');
-      setTimeout(() => {
-        confirmPopup.classList.add('hidden');
-      }, 2000);
-    }
-
-    function updateCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      cart.forEach(item => {
-        const itemElement = document.createElement('li');
-        itemElement.classList.add('flex', 'justify-between', 'items-center', 'border-b', 'py-2');
-        itemElement.innerHTML = `
-          <div class="flex items-center">
-            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 mr-4">
-            <span>${item.name} (${item.quantity})</span>
-          </div>
-          <span>${(item.price * item.quantity).toFixed(2)} MZN</span>
-        `;
-        cartItems.appendChild(itemElement);
-        total += item.price * item.quantity;
-      });
-      cartTotal.textContent = `Total: ${total.toFixed(2)} MZN`;
-    }
-
     function toggleLoginModal() {
       document.getElementById('loginModal').classList.toggle('hidden');
     }
-
-    document.addEventListener('click', function(event) {
-      if (!event.target.closest('#cart-popup') && !event.target.closest('[onclick="toggleCart()"]')) {
-        cartButton.classList.remove('active');
-      }
-      if (!event.target.closest('#loginModal') && !event.target.closest('[onclick="toggleLoginModal()"]')) {
-        document.getElementById('loginModal').classList.add('hidden');
-      }
-    });
   </script>
+  <script src="cart.js"></script>
 </body>
-  </html>
+        </html>
