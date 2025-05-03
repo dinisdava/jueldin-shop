@@ -7,7 +7,7 @@
   <meta name="description" content="Loja Jueldin – Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e mais. Envio rápido.">
   <meta name="keywords" content="Jueldin Shop, loja online, eletrodomésticos, gadgets, Moçambique">
 
-  <!-- SEO e Open Graph -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Jueldin Shop">
   <meta property="og:description" content="Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e muito mais.">
   <meta property="og:image" content="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png">
@@ -18,7 +18,6 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Favicon -->
   <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
 
   <style>
@@ -26,11 +25,18 @@
     .sidebar, .cart, .modal-login { transition: all 0.3s ease-in-out; }
     .cart-popup { display: none; }
     .cart-popup.active { display: block; }
+
+    @media (max-width: 768px) {
+      #cart-popup {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body class="bg-[#fdfaf3] text-gray-900 font-sans">
 
-  <!-- Sidebar Categorias -->
+  <!-- Sidebar -->
   <div id="sidebar" class="sidebar fixed top-0 left-0 w-64 h-full bg-white shadow-lg p-6 transform -translate-x-full z-50">
     <h3 class="font-bold text-lg mb-4">Categorias</h3>
     <ul class="space-y-2">
@@ -41,13 +47,14 @@
     </ul>
   </div>
 
-  <!-- Pop-up Carrinho -->
-  <div id="cart-popup" class="cart-popup fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 z-50">
-    <h3 class="font-bold text-lg mb-4">Seu Carrinho</h3>
-    <ul id="cart-items" class="space-y-2">
-      <!-- Itens do carrinho serão listados aqui -->
-    </ul>
-    <p id="cart-total" class="text-sm font-bold text-gray-600">Total: 0.00 MZN</p>
+  <!-- Carrinho -->
+  <div id="cart-popup" class="cart-popup fixed top-0 right-0 w-80 h-full bg-white shadow-lg p-6 z-50 overflow-y-auto">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-bold text-lg">Seu Carrinho</h3>
+      <button onclick="toggleCart()" class="text-gray-500 text-xl font-bold hover:text-red-600">&times;</button>
+    </div>
+    <ul id="cart-items" class="space-y-2"></ul>
+    <p id="cart-total" class="text-sm font-bold text-gray-600 mt-4">Total: 0.00 MZN</p>
     <button id="checkout-btn" class="w-full bg-[#cc5c14] text-white py-2 rounded mt-4 hover:bg-orange-700">Finalizar Compra</button>
   </div>
 
@@ -99,8 +106,8 @@
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
         <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
       </div>
-      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
-        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform" onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
         <h3 class="font-bold text-lg">Selador de massa</h3>
         <p class="text-red-600 font-bold text-xl">500,00 MZN</p>
       </div>
@@ -111,6 +118,11 @@
       </div>
     </div>
   </section>
+
+  <!-- Pop-up de Confirmação -->
+  <div id="add-confirmation" class="fixed bottom-24 right-4 bg-green-600 text-white py-2 px-4 rounded shadow hidden z-50">
+    Adicionado ao carrinho!
+  </div>
 
   <!-- Scripts -->
   <script>
@@ -131,6 +143,12 @@
         cart.push({ name, price, quantity: 1, image });
       }
       updateCart();
+
+      const confirmPopup = document.getElementById('add-confirmation');
+      confirmPopup.classList.remove('hidden');
+      setTimeout(() => {
+        confirmPopup.classList.add('hidden');
+      }, 2000);
     }
 
     function updateCart() {
@@ -166,4 +184,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
