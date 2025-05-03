@@ -3,61 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Loja online Jueldin Shop com os melhores produtos.">
-  <meta name="keywords" content="jueldin, loja online, produtos, moçambique">
-  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
   <title>Jueldin Shop</title>
+  <meta name="description" content="Loja Jueldin – Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e mais. Envio rápido.">
+  <meta name="keywords" content="Jueldin Shop, loja online, eletrodomésticos, gadgets, Moçambique">
+
+  <!-- SEO e Open Graph -->
+  <meta property="og:title" content="Jueldin Shop">
+  <meta property="og:description" content="Produtos acessíveis e de qualidade. Gadgets, eletrodomésticos e muito mais.">
+  <meta property="og:image" content="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png">
+  <meta property="og:url" content="https://jueldinshop.netlify.app">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png" />
 </head>
-<body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
+<body class="bg-[#fdfaf3] text-gray-900 font-sans">
 
-<noscript>
-  <div class="bg-red-600 text-white p-4 text-center">Por favor, ative o JavaScript para usar todas as funcionalidades do site.</div>
-</noscript>
-
-<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
-  <div class="flex items-center gap-3">
-    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8" />
-    <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+  <!-- Pop-up Carrinho -->
+  <div id="cart-popup" class="fixed right-4 top-20 w-96 max-w-full bg-white shadow-lg rounded-lg p-4 z-50 hidden">
+    <h3 class="text-lg font-bold mb-4">Seu Carrinho</h3>
+    <ul id="cart-items" class="space-y-2 max-h-60 overflow-y-auto pr-2"></ul>
+    <p class="text-right text-gray-700 font-bold mt-4">Total: <span id="cart-total">0 MZN</span></p>
+    <button onclick="checkout()" class="w-full mt-4 bg-[#cc5c14] hover:bg-orange-700 text-white py-2 rounded">Finalizar Compra</button>
   </div>
-  <button aria-label="Abrir modal de login" onclick="document.getElementById('login-modal').classList.remove('hidden')" class="text-sm text-[#cc5c14] font-semibold underline">Entrar</button>
-</header>
 
-<main class="pt-32 px-6 mb-32 text-center">
-  <h1 class="text-3xl font-bold mb-6">Bem-vindo à Jueldin Shop!</h1>
-  <p class="text-lg mb-8">Confira nossos melhores produtos:</p>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-    <!-- Produto 1 -->
-    <div class="bg-white p-4 shadow rounded transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4" />
-      <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
-      <p class="text-red-600 font-bold text-lg">1.000,00 MZN</p>
-      <button onclick="addToCart('Batedeira manual RAF', 1000)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Batedeira manual RAF ao carrinho">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 2 -->
-    <div class="bg-white p-4 shadow rounded transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4" />
-      <h3 class="font-bold text-lg">Selador de massa</h3>
-      <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
-      <button onclick="addToCart('Selador de massa', 500)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Selador de massa ao carrinho">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 3 -->
-    <div class="bg-white p-4 shadow rounded transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4" />
-      <h3 class="font-bold text-lg">Liquidificador</h3>
-      <p class="text-red-600 font-bold text-lg">2.500,00 MZN</p>
-      <button onclick="addToCart('Liquidificador', 2500)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Liquidificador ao carrinho">Adicionar ao Carrinho</button>
+  <!-- Modal Login -->
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg w-80">
+      <h3 class="font-bold text-lg mb-4 text-center">Entrar</h3>
+      <input type="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
+      <input type="password" placeholder="Senha" class="w-full p-2 mb-4 border rounded">
+      <button class="w-full bg-[#cc5c14] text-white py-2 rounded font-bold hover:bg-orange-700">Acessar</button>
     </div>
   </div>
-</main>
 
-<footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
-  <p>&copy; 2025 Jueldin Shop</p>
-</footer>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+      <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+    </div>
+    <div class="flex gap-4 items-center">
+      <!-- Carrinho com contador -->
+      <button id="cart-button" class="relative" title="Carrinho">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-shopping-cart-90_pzyzgm.png" alt="Carrinho" class="w-6 h-6">
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+      <button onclick="toggleLoginModal()" title="Login">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746216495/icons8-login-90_wtj0g4.png" alt="Login" class="w-6 h-6">
+      </button>
+    </div>
+  </header>
 
-<script src="cart.js"></script>
+  <!-- Hero -->
+  <section class="bg-[#cc5c14] text-white py-12 px-6 mt-20 md:flex md:items-center md:justify-between">
+    <div class="max-w-xl mb-6 md:mb-0">
+      <h1 class="text-3xl font-bold leading-tight mb-4">Produtos de alta qualidade e muito acessíveis!</h1>
+      <p class="text-lg mb-6">Compre aqui electrodomésticos, gadgets, ferramentas, suplementos, e mais...</p>
+      <a href="produtos.html" class="bg-black px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-800">VER PRODUTOS</a>
+    </div>
+    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148028/Polish_20250502_030330919_rmxqxa.png" alt="Air Fryer" class="w-64 mx-auto md:mx-0" loading="lazy">
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtos" class="py-12 px-6">
+    <h2 class="text-2xl font-bold mb-8 text-center">PRODUTOS</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+        <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
+        <p class="text-red-600 font-bold text-xl">1,000 MZN</p>
+      </div>
+
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+        <h3 class="font-bold text-lg">Selador de massa</h3>
+        <p class="text-red-600 font-bold text-xl">500,00 MZN</p>
+      </div>
+
+      <div class="text-center bg-white p-4 rounded-lg shadow hover:scale-105 transition-transform cursor-pointer"
+        onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador"
+          class="w-full h-48 object-contain mx-auto mb-4" loading="lazy">
+        <h3 class="font-bold text-lg">Liquidificador</h3>
+        <p class="text-red-600 font-bold text-xl">2,500 MZN</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    function toggleLoginModal() {
+      document.getElementById('loginModal').classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', function(event) {
+      const cartPopup = document.getElementById('cart-popup');
+      if (!event.target.closest('#cart-popup') && !event.target.closest('#cart-button')) {
+        cartPopup.classList.add('hidden');
+      }
+      if (!event.target.closest('#loginModal') && !event.target.closest('[onclick="toggleLoginModal()"]')) {
+        document.getElementById('loginModal').classList.add('hidden');
+      }
+    });
+  </script>
+  <script src="cart.js"></script>
 </body>
 </html>

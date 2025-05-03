@@ -3,65 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo de produtos da Jueldin Shop. Compre online com segurança.">
-  <meta name="keywords" content="produtos, catálogo, jueldin shop, moçambique, compras">
-  <title>Catálogo - Jueldin Shop</title>
   <link rel="icon" href="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" type="image/png">
+  <title>Catálogo - Jueldin Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#fdfaf3] text-gray-900 font-sans min-h-screen">
 
-<noscript>
-  <div class="bg-red-600 text-white p-4 text-center">Este site requer JavaScript para funcionar corretamente.</div>
-</noscript>
+  <!-- Cabeçalho -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
+      <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+    </div>
+    <a href="index.html" class="text-sm text-[#cc5c14] font-semibold underline">← Voltar à página inicial</a>
+  </header>
 
-<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
-  <div class="flex items-center gap-3">
-    <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746148084/Polish_20250502_025840840_jleksh.png" alt="Logo Jueldin" class="w-8 h-8">
-    <span class="text-lg font-bold tracking-wide">Jueldin Shop</span>
+  <!-- Conteúdo -->
+  <main class="pt-32 px-6 mb-32">
+    <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <!-- Produtos -->
+      <!-- Produto 1 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
+        <p class="text-red-600 font-bold text-lg">1,000 MZN</p>
+        <button onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Selador de massa</h3>
+        <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
+        <button onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
+        <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
+        <h3 class="font-bold text-lg">Liquidificador</h3>
+        <p class="text-red-600 font-bold text-lg">2,500 MZN</p>
+        <button onclick="addToCart('Liquidificador', 2500, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
+    <nav class="mb-4">
+      <a href="/termos.html" class="mx-3 text-white hover:underline">Termos e Condições</a>
+      <a href="/cookies.html" class="mx-3 text-white hover:underline">Cookies</a>
+      <a href="/privacidade.html" class="mx-3 text-white hover:underline">Privacidade</a>
+      <a href="/seguranca.html" class="mx-3 text-white hover:underline">Segurança</a>
+    </nav>
+    <p>&copy; 2025 Jueldin Shop</p>
+    <p class="mt-2">Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a></p>
+  </footer>
+
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900 text-white px-4 py-3 text-sm flex justify-between items-center z-50">
+    <span>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="/cookies" class="text-blue-400 underline">Política de Cookies</a>.</span>
+    <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
-  <a href="index.html" class="text-sm text-[#cc5c14] font-semibold underline" aria-label="Voltar à página inicial">← Voltar à página inicial</a>
-</header>
 
-<main class="pt-32 px-6 mb-32">
-  <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+  <!-- Carrinho -->
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 left-4 sm:left-auto sm:w-96 bg-white border border-gray-300 shadow-lg rounded-lg p-4 z-50 max-h-[80vh] overflow-y-auto">
+    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
+    <ul id="cart-items" class="mb-2"></ul>
+    <p class="font-bold">Total: <span id="cart-total">0,00 MZN</span></p>
 
-    <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
-      <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
-      <p class="text-red-600 font-bold text-lg">1.000,00 MZN</p>
-      <button onclick="addToCart('Batedeira manual RAF', 1000)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Batedeira manual RAF ao carrinho">Adicionar ao Carrinho</button>
+    <!-- Formulário do cliente -->
+    <div class="mt-4 space-y-2 text-sm">
+      <input type="text" id="cliente-nome" placeholder="Nome completo" class="w-full border rounded px-3 py-2" />
+      <input type="text" id="cliente-endereco" placeholder="Endereço" class="w-full border rounded px-3 py-2" />
+      <select id="cliente-pagamento" class="w-full border rounded px-3 py-2">
+        <option value="">Forma de pagamento</option>
+        <option>Dinheiro</option>
+        <option>mKesh</option>
+        <option>eMola</option>
+        <option>Cartão</option>
+      </select>
     </div>
 
-    <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
-      <h3 class="font-bold text-lg">Selador de massa</h3>
-      <p class="text-red-600 font-bold text-lg">500,00 MZN</p>
-      <button onclick="addToCart('Selador de massa', 500)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Selador de massa ao carrinho">Adicionar ao Carrinho</button>
-    </div>
-
-    <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
-      <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
-      <h3 class="font-bold text-lg">Liquidificador</h3>
-      <p class="text-red-600 font-bold text-lg">2.500,00 MZN</p>
-      <button onclick="addToCart('Liquidificador', 2500)" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700" aria-label="Adicionar Liquidificador ao carrinho">Adicionar ao Carrinho</button>
-    </div>
-
+    <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Enviar Pedido pelo WhatsApp</button>
   </div>
-</main>
 
-<footer class="bg-[#3a1f0d] text-white text-center py-8 text-sm">
-  <nav class="mb-4">
-    <a href="/termos.html" class="mx-3 hover:underline">Termos e Condições</a>
-    <a href="/cookies.html" class="mx-3 hover:underline">Cookies</a>
-    <a href="/privacidade.html" class="mx-3 hover:underline">Privacidade</a>
-    <a href="/seguranca.html" class="mx-3 hover:underline">Segurança</a>
-  </nav>
-  <p>&copy; 2025 Jueldin Shop</p>
-  <p class="mt-2">Desenvolvido por: <a href="mailto:dinosart258@gmail.com" class="text-red-300 hover:underline">dinosart258@gmail.com</a></p>
-</footer>
+  <!-- Carrinho flutuante -->
+  <div id="cart-button" class="fixed bottom-4 right-4 bg-orange-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50">
+    🛒 <span id="cart-count">0</span>
+  </div>
 
-<script src="cart.js"></script>
+  <!-- Confirmação de adição -->
+  <div id="add-confirmation" class="fixed bottom-24 right-4 bg-green-600 text-white py-2 px-4 rounded shadow hidden z-50">
+    Adicionado ao carrinho!
+  </div>
+
+  <!-- Script externo -->
+  <script src="cart.js"></script>
 </body>
-</html>
+    </html>
