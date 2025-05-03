@@ -83,80 +83,98 @@
     🛒 <span id="cart-count">0</span>
   </div>
 
-  <!-- Script para o Carrinho e Cookies -->
   <script>
-    // Função para aceitar cookies
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
+  // Função para aceitar cookies
+  function acceptCookies() {
+    localStorage.setItem("cookiesAccepted", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+
+  // Formatar moeda MZN
+  const formatCurrency = value => new Intl.NumberFormat('pt-MZ', {
+    style: 'currency',
+    currency: 'MZN'
+  }).format(value);
+
+  window.onload = function () {
+    if (localStorage.getItem("cookiesAccepted") === "true") {
       document.getElementById("cookie-banner").style.display = "none";
     }
 
-    window.onload = function() {
-      if (localStorage.getItem("cookiesAccepted") === "true") {
-        document.getElementById("cookie-banner").style.display = "none";
-      }
+    // Carregar carrinho salvo
+    const savedCart = localStorage.getItem('jueldinCart');
+    if (savedCart) {
+      const parsedCart = JSON.parse(savedCart);
+      cart.push(...parsedCart);
+      updateCart();
     }
+  }
 
-    // Lógica do Carrinho
-    const cartButton = document.getElementById('cart-button');
-    const cartPopup = document.getElementById('cart-popup');
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    const cartCount = document.getElementById('cart-count');
+  // Lógica do Carrinho
+  const cartButton = document.getElementById('cart-button');
+  const cartPopup = document.getElementById('cart-popup');
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  const cartCount = document.getElementById('cart-count');
 
-    const cart = [];
+  const cart = [];
 
-    // Abrir/fechar o pop-up do carrinho
-    cartButton.addEventListener('click', () => {
-      cartPopup.classList.toggle('hidden');
+  // Abrir/fechar o pop-up do carrinho
+  cartButton.addEventListener('click', () => {
+    cartPopup.classList.toggle('hidden');
+  });
+
+  // Adicionar produto ao carrinho
+  function addToCart(name, price, image) {
+    const existingProduct = cart.find(item => item.name === name);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1, image });
+    }
+    updateCart();
+  }
+
+  // Atualizar o carrinho
+  function updateCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let itemCount = 0;
+
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.classList.add('flex', 'items-center', 'mb-2');
+      li.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-contain mr-3">
+        <span class="flex-1">${item.name} x${item.quantity}</span>
+        <span>${formatCurrency(item.price * item.quantity)}</span>
+      `;
+      cartItems.appendChild(li);
+      total += item.price * item.quantity;
+      itemCount += item.quantity;
     });
 
-    // Adicionar produto ao carrinho
-    function addToCart(name, price, image) {
-      const existingProduct = cart.find(item => item.name === name);
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        cart.push({ name, price, quantity: 1, image });
-      }
-      updateCart();
+    cartTotal.textContent = formatCurrency(total);
+    cartCount.textContent = itemCount;
+    saveCart();
+  }
+
+  // Salvar o carrinho no localStorage
+  function saveCart() {
+    localStorage.setItem('jueldinCart', JSON.stringify(cart));
+  }
+
+  // Finalizar compra
+  function checkout() {
+    if (cart.length === 0) {
+      alert("Carrinho vazio.");
+      return;
     }
-
-    // Atualizar o carrinho
-    function updateCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      let itemCount = 0;
-
-      cart.forEach(item => {
-        const li = document.createElement('li');
-        li.classList.add('flex', 'items-center', 'mb-2');
-        li.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-contain mr-3">
-          <span class="flex-1">${item.name} x${item.quantity}</span>
-          <span>MZN ${(item.price * item.quantity).toFixed(2)}</span>
-        `;
-        cartItems.appendChild(li);
-        total += item.price * item.quantity;
-        itemCount += item.quantity;
-      });
-
-      cartTotal.textContent = total.toFixed(2);
-      cartCount.textContent = itemCount;
-    }
-
-    // Finalizar compra
-    function checkout() {
-      if (cart.length === 0) {
-        alert("Carrinho vazio.");
-        return;
-      }
-      alert("Compra finalizada! Em breve entraremos em contato.");
-      cart.length = 0;
-      updateCart();
-      cartPopup.classList.add('hidden');
-    }
-  </script>
-
+    alert("Compra finalizada! Em breve entraremos em contato.");
+    cart.length = 0;
+    updateCart();
+    cartPopup.classList.add('hidden');
+  }
+ </script>
 </body>
 </html>
