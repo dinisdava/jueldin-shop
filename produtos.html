@@ -23,6 +23,7 @@
     <h1 class="text-2xl font-bold text-center mb-8">Catálogo de Produtos</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
       <!-- Produtos -->
+      <!-- Produto 1 -->
       <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png" alt="Batedeira manual RAF" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Batedeira manual RAF</h3>
@@ -30,6 +31,7 @@
         <button onclick="addToCart('Batedeira manual RAF', 1000, 'https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742125165138_y0mba9.png')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
 
+      <!-- Produto 2 -->
       <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg" alt="Selador de massa" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Selador de massa</h3>
@@ -37,6 +39,7 @@
         <button onclick="addToCart('Selador de massa', 500, 'https://res.cloudinary.com/dinisdava/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1746149470/IMG-20250315-WA0188_ugdmyj.jpg')" class="mt-4 w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700">Adicionar ao Carrinho</button>
       </div>
 
+      <!-- Produto 3 -->
       <div class="bg-white p-4 shadow rounded text-center transition-transform hover:scale-105">
         <img src="https://res.cloudinary.com/dinisdava/image/upload/v1746149471/1742067500428_vl289r.png" alt="Liquidificador" class="w-full h-40 object-contain mb-4">
         <h3 class="font-bold text-lg">Liquidificador</h3>
@@ -65,7 +68,7 @@
   </div>
 
   <!-- Carrinho -->
-  <div id="cart-popup" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 shadow-lg rounded-lg p-4 w-96 z-50">
+  <div id="cart-popup" class="hidden fixed bottom-20 right-4 left-4 sm:left-auto sm:w-96 bg-white border border-gray-300 shadow-lg rounded-lg p-4 z-50 max-h-[80vh] overflow-y-auto">
     <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
     <ul id="cart-items" class="mb-2"></ul>
     <p class="font-bold">Total: <span id="cart-total">0,00 MZN</span></p>
@@ -91,133 +94,12 @@
     🛒 <span id="cart-count">0</span>
   </div>
 
-  <!-- Script -->
-  <script>
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
-      document.getElementById("cookie-banner").style.display = "none";
-    }
+  <!-- Confirmação de adição -->
+  <div id="add-confirmation" class="fixed bottom-24 right-4 bg-green-600 text-white py-2 px-4 rounded shadow hidden z-50">
+    Adicionado ao carrinho!
+  </div>
 
-    const formatCurrency = value => new Intl.NumberFormat('pt-MZ', {
-      style: 'currency',
-      currency: 'MZN'
-    }).format(value);
-
-    const cart = [];
-    const cartButton = document.getElementById('cart-button');
-    const cartPopup = document.getElementById('cart-popup');
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    const cartCount = document.getElementById('cart-count');
-
-    cartButton.addEventListener('click', () => {
-      cartPopup.classList.toggle('hidden');
-    });
-
-    function addToCart(name, price, image) {
-      const existing = cart.find(item => item.name === name);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ name, price, quantity: 1, image });
-      }
-      updateCart();
-    }
-
-    function increaseQuantity(name) {
-      const item = cart.find(p => p.name === name);
-      if (item) {
-        item.quantity += 1;
-        updateCart();
-      }
-    }
-
-    function decreaseQuantity(name) {
-      const item = cart.find(p => p.name === name);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-      } else {
-        removeFromCart(name);
-        return;
-      }
-      updateCart();
-    }
-
-    function removeFromCart(name) {
-      const index = cart.findIndex(item => item.name === name);
-      if (index > -1) {
-        cart.splice(index, 1);
-        updateCart();
-      }
-    }
-
-    function updateCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      let count = 0;
-
-      cart.forEach(item => {
-        const li = document.createElement('li');
-        li.classList.add('flex', 'items-center', 'mb-2');
-        li.innerHTML = `
-          <img src="${item.image}" class="w-12 h-12 object-contain mr-3" />
-          <div class="flex-1">
-            <strong>${item.name}</strong><br>
-            <div class="flex items-center gap-2 mt-1">
-              <button onclick="decreaseQuantity('${item.name}')" class="px-2 py-1 bg-gray-200 rounded">-</button>
-              <span>${item.quantity}</span>
-              <button onclick="increaseQuantity('${item.name}')" class="px-2 py-1 bg-gray-200 rounded">+</button>
-            </div>
-            <button onclick="removeFromCart('${item.name}')" class="text-red-600 text-xs underline mt-1 inline-block">Remover</button>
-          </div>
-          <span class="ml-2">${formatCurrency(item.price * item.quantity)}</span>
-        `;
-        cartItems.appendChild(li);
-        total += item.price * item.quantity;
-        count += item.quantity;
-      });
-
-      cartTotal.textContent = formatCurrency(total);
-      cartCount.textContent = count;
-    }
-
-    function checkout() {
-      if (cart.length === 0) {
-        alert("Carrinho vazio.");
-        return;
-      }
-
-      const nome = document.getElementById('cliente-nome').value.trim();
-      const endereco = document.getElementById('cliente-endereco').value.trim();
-      const pagamento = document.getElementById('cliente-pagamento').value;
-
-      if (!nome || !endereco || !pagamento) {
-        alert("Por favor, preencha todas as informações de entrega.");
-        return;
-      }
-
-      const numero = "258879903962"; // Substitua pelo seu número do WhatsApp
-      let msg = `*Pedido Jueldin Shop*%0A%0A`;
-      cart.forEach(item => {
-        msg += `• ${item.name} x${item.quantity} = ${formatCurrency(item.price * item.quantity)}%0A`;
-      });
-
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      msg += `%0A*Total:* ${formatCurrency(total)}%0A`;
-      msg += `*Nome:* ${nome}%0A*Endereço:* ${endereco}%0A*Pagamento:* ${pagamento}`;
-
-      window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
-
-      cart.length = 0;
-      updateCart();
-      cartPopup.classList.add('hidden');
-    }
-
-    window.onload = function () {
-      if (localStorage.getItem("cookiesAccepted") === "true") {
-        document.getElementById("cookie-banner").style.display = "none";
-      }
-    }
-  </script>
+  <!-- Script externo -->
+  <script src="cart.js"></script>
 </body>
-      </html>
+    </html>
