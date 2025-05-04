@@ -51,3 +51,38 @@ exports.register = async (req, res) => {
     throw new Error('Dados de usuário inválidos');
   }
 };
+
+// @desc    Obter perfil do usuário
+// @route   GET /api/auth/profile
+// @access  Private
+exports.getUserProfile = async (req, res) => {
+  const user = await User.findById(req.user._id).select('-password');
+  res.json(user);
+};
+
+// @desc    Atualizar perfil
+// @route   PUT /api/auth/profile
+// @access  Private
+exports.updateUserProfile = async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id)
+    });
+  } else {
+    res.status(404);
+    throw new Error('Usuário não encontrado');
+  }
+};
