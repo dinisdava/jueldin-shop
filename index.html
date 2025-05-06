@@ -390,6 +390,10 @@
       const count = 0; // Seria calculado baseado nos itens no carrinho
       document.getElementById('cart-count').textContent = count;
     }
+    // Adicione este manipulador de eventos dentro da seção de Scripts
+document.getElementById('cart-button').addEventListener('click', function() {
+  document.getElementById('cart-popup').classList.toggle('hidden');
+});
   </script>
   
   <!-- Carrega o cart.js de forma assíncrona -->
