@@ -91,16 +91,17 @@ function checkout() {
   if (cart.length === 0) return alert("Carrinho vazio.");
 
   const nome = document.getElementById('cliente-nome').value.trim();
+  const telefone = document.getElementById('cliente-telefone').value.trim();
   const endereco = document.getElementById('cliente-endereco').value.trim();
   const pagamento = document.getElementById('cliente-pagamento').value;
 
-  if (!nome || !endereco || !pagamento) return alert("Preencha todas as informações de entrega.");
+  if (!nome || !telefone || !endereco || !pagamento) return alert("Preencha todas as informações de entrega.");
 
   const numero = "258879903962";
   let msg = `*Pedido Jueldin Shop*%0A%0A`;
   cart.forEach(item => msg += `• ${item.name} x${item.quantity} = ${formatCurrency(item.price * item.quantity)}%0A`);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  msg += `%0A*Total:* ${formatCurrency(total)}%0A*Nome:* ${nome}%0A*Endereço:* ${endereco}%0A*Pagamento:* ${pagamento}`;
+  msg += `%0A*Total:* ${formatCurrency(total)}%0A*Nome:* ${nome}%0A*Telefone:* ${telefone}%0A*Endereço:* ${endereco}%0A*Pagamento:* ${pagamento}`;
 
   window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
 
