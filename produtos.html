@@ -108,24 +108,19 @@
     <button onclick="acceptCookies()" class="ml-4 bg-blue-500 text-black font-semibold px-4 py-2 rounded hover:bg-blue-400">Concordar</button>
   </div>
 
-  <!-- Carrinho -->
-  <div id="cart-popup" class="hidden fixed bottom-20 right-4 left-4 sm:left-auto sm:w-96 bg-white border border-gray-300 shadow-lg rounded-lg p-4 z-50 max-h-[80vh] overflow-y-auto">
-    <h2 class="text-lg font-semibold mb-2">Seu Carrinho</h2>
-    <ul id="cart-items" class="mb-2"></ul>
-    <p class="font-bold">Total: <span id="cart-total">0,00 MZN</span></p>
-
-    <!-- Formulário do cliente -->
-    <div class="mt-4 space-y-2 text-sm">
-      <input type="text" id="cliente-nome" placeholder="Nome completo" class="w-full border rounded px-3 py-2" />
-      <input type="text" id="cliente-endereco" placeholder="Endereço" class="w-full border rounded px-3 py-2" />
-      <select id="cliente-pagamento" class="w-full border rounded px-3 py-2">
-        <option value="">Forma de pagamento</option>
-        <option>Dinheiro</option>
-        <option>mKesh</option>
-        <option>eMola</option>
-        <option>Cartão</option>
-      </select>
-    </div>
+<!-- Formulário do cliente -->
+<div class="mt-4 space-y-2 text-sm">
+  <input type="text" id="cliente-nome" placeholder="Nome completo" class="w-full border rounded px-3 py-2" />
+  <input type="tel" id="cliente-telefone" placeholder="Número de telefone" class="w-full border rounded px-3 py-2" />
+  <input type="text" id="cliente-endereco" placeholder="Endereço" class="w-full border rounded px-3 py-2" />
+  <select id="cliente-pagamento" class="w-full border rounded px-3 py-2">
+    <option value="">Forma de pagamento</option>
+    <option>Dinheiro</option>
+    <option>mKesh</option>
+    <option>eMola</option>
+    <option>Cartão</option>
+  </select>
+</div>
 
     <button onclick="checkout()" class="mt-4 w-full bg-[#cc5c14] text-white py-2 rounded hover:bg-orange-600">Enviar Pedido pelo WhatsApp</button>
   </div>
